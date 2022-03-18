@@ -1,12 +1,11 @@
 //Instanciando modulos de Express, Body-Parser y consultas del modulo PG
 const express = require("express")
 const app = express()
-const bodyParser = require("body-parser")
 const {nuevoCurso, getCurso, editCurso, eliminarCurso} = require("./consultas")
 
-//Configuracion de Body-Parser
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+//Configuracion de para tomar los elementos del body como JSON
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 //Disponibilizando ruta raíz para consumo del archivo index.html
 app.get("/", (req, res) => {
